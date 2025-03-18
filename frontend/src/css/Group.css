@@ -1,0 +1,229 @@
+/* src/css/Group.css */
+
+/* 메인 영역 컨테이너 */
+.group_container {
+    background-color: #f5f5f5; 
+    padding: 20px;
+    box-sizing: border-box;
+    position: relative; /* 글쓰기 아이콘 위치 */
+    display: felx;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  
+  /* 상단 바 */
+  .group_top_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  
+  /* 그룹이름 */
+  .group_name {
+    margin: 0;
+    font-weight: bold;
+    font-size: 55px;
+  }
+  
+  /* 상단 우측( 탈퇴하기, 검색창 등) */
+  .group_top_right {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* 요소 간 간격 */
+  }
+  
+  .group_member_count {
+    font-size: 16px;
+    color: #666;
+  }
+
+  /*탈퇴하기 버튼*/
+.leave_icon {
+    background-color: hsl(0, 0%, 89%);
+    color: #000;
+    border: 1px solid hsl(0, 0%, 89%);
+    border-radius: 16px;
+    padding: 8px 14px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+ 
+  .leave_icon:hover {
+    background-color: #f0f0f0; 
+    color: #333;
+  }
+  
+  
+  /* 상단 검정색 줄 */
+  .group_black_line {
+    border: none;
+    border-top: 2px solid #000;
+    margin-bottom: 16px;
+  }
+  
+
+  .white_box {
+    background-color: #fff;
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    position: relative;
+  
+    /* 기존: width: 1450px; height: 700px; 등 고정값 유지 */
+    width: 1450px;
+    height: 700px;
+  
+    /* 수정: 위쪽 간격 줄이고, 왼쪽 간격 늘리기 */
+    margin: 10px 0 0 50px;
+    /* top=10px, right=0, bottom=0, left=50px */
+  }
+  
+
+  .group_sort{
+    display: flex;
+    height: 60px;
+    background-color: #f0f0f0;
+    border-radius: 20px;
+  }
+  /* 왼쪽 노란 영역: 최신순 버튼 */
+  .sort_button {
+    width: 120px;           /* 노란색 부분 폭 (조절 가능) */
+    background-color: #ffe066;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    /* 부모 높이를 채움 */
+    height: 100%;
+    box-sizing: border-box;
+  }
+  
+  /* 드롭다운 (오래된 순, 조회수 많은 순) */
+  .sort_dropdown {
+    position: absolute;
+    top: calc(100% + 5px); /* 박스 아래로 약간 띄워 배치 */
+    left: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    z-index: 999;
+    padding: 4px 0;
+  }
+  
+  /* 드롭다운 항목 */
+  .dropdown_option {
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .dropdown_option:hover {
+    background-color: #f0f0f0;
+  }
+  .group_search{
+    display: flex;
+  }
+  /* 오른쪽 연회색 영역 (검색창 + 돋보기) */
+  .search_input {
+    flex: 1;                /* 남은 공간 전부 사용 */
+    border: none;
+    outline: none;
+    font-size: 18px;
+    padding: 0 8px;
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+  }
+  
+  /* 돋보기 아이콘 */
+  .search_icon {
+    width: 40px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: #000;
+  }
+  .search_icon img{
+    width: 30px;
+    height: 30px;
+  }
+  
+  /* 게시글 목록 (옅은 회색 블럭) */
+  .post_list {
+    max-height: 400px; /* 스크롤 영역 높이 */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  /* 스크롤바 (Social에 있던 예시 참고) */
+  .post_list::-webkit-scrollbar {
+    width: 50px;
+  }
+  .post_list::-webkit-scrollbar-track {
+    background-color: white;
+    border-radius: 35px;
+  }
+  .post_list::-webkit-scrollbar-thumb {
+    border: 15px solid white; 
+    background-color: #ccc;
+    border-radius: 35px;
+  }
+  
+  /* 게시글 아이템 (옅은 회색 블럭) */
+  .post_item {
+    background-color: #eaeaea; /* 옅은 회색 */
+    border-radius: 10px;
+    padding: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  }
+  
+  .post_text {
+    margin: 10px;
+    font-size: 28px;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .post_meta {
+    
+    margin: 10px 0px 5px 10px;
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* 글쓰기 아이콘 (원형 +) */
+  .write_icon {
+    position: absolute;
+    left: 40px;
+    bottom:40px;
+    width: 90px;
+    height: 90px;
+    background-color: #ffe066;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+.write_icon > div:first-child{
+  color: #fff;
+  font-size: 50px;
+  font-weight: bold;
+  line-height: 1;
+     background-color:#ffe066;;
+}
+  
+  
