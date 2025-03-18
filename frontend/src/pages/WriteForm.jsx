@@ -1,37 +1,25 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaPaperPlane } from "react-icons/fa"; // Post 아이콘 추가
 import Banner from "../components/Banner";
 import SideBar from "../components/SideBar";
 import "../css/WriteForm.css";
 
 const WriteForm = () => {
   const navigate = useNavigate();
+  const [title, setTitle] = useState(""); // 제목 입력값
+  const [content, setContent] = useState(""); // 내용 입력값
+  const [showProgress, setShowProgress] = useState(false); // 진척도 표시 상태
 
-  // 제목, 내용 상태
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+  // "진척도 가져오기" 버튼 클릭 → 제목/내용 & 버튼 사라지고 진척도 표시
+  const handleShowProgress = () => setShowProgress(true);
 
-  // 진척도 표 표시 여부
-  const [showProgress, setShowProgress] = useState(false);
+  // "닫기" 버튼 클릭 → 진척도 사라지고 제목/내용 & 버튼 다시 표시
+  const handleHideProgress = () => setShowProgress(false);
 
-  // "진척도 가져오기" 버튼
-  const handleShowProgress = () => {
-    setShowProgress(true);
-  };
-
-  // "닫기" 버튼
-  const handleHideProgress = () => {
-    setShowProgress(false);
-  };
-
-  // "Post" 버튼 -> DB 없이 /group 페이지로 이동 + 새 글 정보 전달
+  // "Post" 버튼 클릭 (게시글 작성 후 이동)
   const handlePost = () => {
     navigate("/group", {
-      state: {
-        title,
-        content,
-      },
+      state: { title, content },
     });
   };
 
@@ -44,7 +32,7 @@ const WriteForm = () => {
           <div className="white_box_writeform">
             <h2>글쓰기</h2>
 
-            {/* 제목/내용 입력란 (진척도 안보일 때) */}
+            {/* 제목 & 내용 입력란 (진척도를 가져오면 숨김) */}
             {!showProgress && (
               <>
                 <div className="input-group-writeform">
@@ -66,15 +54,15 @@ const WriteForm = () => {
                     onChange={(e) => setContent(e.target.value)}
                   />
                 </div>
+
+                {/* 진척도 가져오기 버튼 (진척도를 가져오기 전만 표시) */}
+                <button onClick={handleShowProgress} className="progress-button-writeform">
+                  진척도 가져오기
+                </button>
               </>
             )}
 
-            {/* 진척도 가져오기 버튼 */}
-            <button onClick={handleShowProgress} className="progress-button-writeform">
-              진척도 가져오기
-            </button>
-
-            {/* 진척도 가져오기 버튼 클릭 후 보여질 화면 */}
+            {/* 진척도 가져오기를 누르면 아래의 진척도 표시됨 */}
             {showProgress && (
               <>
                 <p className="progress_share_info">
@@ -88,10 +76,7 @@ const WriteForm = () => {
                   <p>오늘의 진척도</p>
                   <p>8개 / 10개</p>
                   <div className="progress_bar_outer_writeform">
-                    <div
-                      className="progress_bar_inner_writeform"
-                      style={{ width: "80%" }}
-                    >
+                    <div className="progress_bar_inner_writeform" style={{ width: "80%" }}>
                       80%
                     </div>
                   </div>
@@ -102,46 +87,61 @@ const WriteForm = () => {
                   <h2>하늘다람쥐님의 주간 진척도</h2>
                   <h3>03-11 ~ 03-17</h3>
                   <div className="weekly_progress_list">
-                    {[
-                      { date: "03-11", percent: 20, color: "red" },
-                      { date: "03-12", percent: 45, color: "yellow" },
-                      { date: "03-13", percent: 60, color: "yellow" },
-                      { date: "03-14", percent: 75, color: "green" },
-                      { date: "03-15", percent: 30, color: "red" },
-                      { date: "03-16", percent: 90, color: "green" },
-                      { date: "03-17", percent: 50, color: "yellow" },
-                    ].map((day, index) => (
-                      <div key={index} className="weekly_progress_item">
-                        <span>{day.date}</span>
-                        <div className="progress_bar_outer">
-                          <div className={`progress_bar_inner ${day.color}`} style={{ width: `${day.percent}%` }}>
-                            {day.percent}%
-                          </div>
-                        </div>
+                    <div className="weekly_progress_item">
+                      <span>03-11</span>
+                      <div className="progress_bar_outer">
+                        <div className="progress_bar_inner red" style={{ width: "20%" }}>20%</div>
                       </div>
-                    ))}
+                    </div>
+                    <div className="weekly_progress_item">
+                      <span>03-12</span>
+                      <div className="progress_bar_outer">
+                        <div className="progress_bar_inner yellow" style={{ width: "45%" }}>45%</div>
+                      </div>
+                    </div>
+                    <div className="weekly_progress_item">
+                      <span>03-13</span>
+                      <div className="progress_bar_outer">
+                        <div className="progress_bar_inner yellow" style={{ width: "60%" }}>60%</div>
+                      </div>
+                    </div>
+                    <div className="weekly_progress_item">
+                      <span>03-14</span>
+                      <div className="progress_bar_outer">
+                        <div className="progress_bar_inner green" style={{ width: "75%" }}>75%</div>
+                      </div>
+                    </div>
+                    <div className="weekly_progress_item">
+                      <span>03-15</span>
+                      <div className="progress_bar_outer">
+                        <div className="progress_bar_inner red" style={{ width: "30%" }}>30%</div>
+                      </div>
+                    </div>
+                    <div className="weekly_progress_item">
+                      <span>03-16</span>
+                      <div className="progress_bar_outer">
+                        <div className="progress_bar_inner green" style={{ width: "90%" }}>90%</div>
+                      </div>
+                    </div>
+                    <div className="weekly_progress_item">
+                      <span>03-17</span>
+                      <div className="progress_bar_outer">
+                        <div className="progress_bar_inner yellow" style={{ width: "50%" }}>50%</div>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+                {/* 닫기 + Post 버튼 (진척도 가져온 후 표시됨) */}
+                <div className="button_container_writeform">
+                  <button onClick={handleHideProgress} className="close_button_writeform">
+                    닫기
+                  </button>
+                  <button onClick={handlePost} className="post_button_writeform">
+                    Post
+                  </button>
+                </div>
               </>
-            )}
-
-            {/* 닫기 버튼 & Post 버튼 함께 배치 */}
-            {showProgress && (
-             <div className="button_container_writeform">
-             <button onClick={handleHideProgress} className="close_button_writeform">
-                 닫기
-             </button>
-             <button onClick={handlePost} className="post_button_writeform">
-                 🚀 Post
-             </button>
-         </div>
-            )}
-
-            {/* Post 버튼 (진척도를 가져오지 않았을 때) */}
-            {!showProgress && (
-              <button onClick={handlePost} className="post_button_writeform">
-                <FaPaperPlane style={{ marginRight: "5px" }} /> Post
-              </button>
             )}
           </div>
         </div>
