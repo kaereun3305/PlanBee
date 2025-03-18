@@ -1,4 +1,3 @@
-// src/pages/Group.jsx
 import React, { useState } from "react";
 import Banner from "../components/Banner";
 import SideBar from "../components/SideBar";
@@ -8,15 +7,16 @@ import { useNavigate } from "react-router-dom";
 const Group = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortOption, setSortOption] = useState("최신순"); // 정렬 옵션 상태 추가
   const navigate = useNavigate();
 
   // 드롭다운 토글
   const handleToggle = () => setIsOpen(!isOpen);
 
-  // 드롭다운 항목 선택
+  // 드롭다운 항목 선택 시 정렬 기준 변경
   const handleOptionClick = (option) => {
-    console.log(`${option} 정렬 선택됨`);
-    setIsOpen(false);
+    setSortOption(option); // 선택한 옵션으로 변경
+    setIsOpen(false); // 드롭다운 닫기
   };
 
   // 검색창 입력
@@ -48,25 +48,35 @@ const Group = () => {
                 {/* 정렬 버튼 */}
                 <div className="group_sort">
                   <div className="sort_button" onClick={handleToggle}>
-                    최신순
-                    <div className={`sort_dropdown ${isOpen ? "visible" : ""}`}>
+                    {sortOption} {/* 현재 선택된 정렬 기준 표시 */}
+                    {isOpen && (
+                      <div className="sort_dropdown visible">
+                        <div className="dropdown_option" onClick={() => handleOptionClick("최신순")}>
+                          최신순
+                        </div>
+                        <div className="dropdown_option" onClick={() => handleOptionClick("오래된 순")}>
+                          오래된 순
+                        </div>
+                        <div className="dropdown_option" onClick={() => handleOptionClick("조회수 많은 순")}>
+                          조회수 많은 순
+                        </div>
+                      </div>
+                    )}
+                  </div>
 
-                      <div className="dropdown_option" onClick={() => handleOptionClick("오래된 순")}>
-                        오래된 순
-                      </div>
-                      <div className="dropdown_option" onClick={() => handleOptionClick("조회수 많은 순")}>
-                        조회수 많은 순
-                      </div>
+                  {/* 검색창 */}
+                  <div className="group_search">
+                    <input
+                      type="text"
+                      className="search_input"
+                      value={searchTerm}
+                      onChange={handleSearchChange}
+                    />
+                    <div className="search_icon" onClick={handleSearch}>
+                      <img src="../img/search_icon.png" />
                     </div>
                   </div>
-                    {/* 검색창 */}
-                  <div className="group_search">
-                    <input type="text" className="search_input" value={searchTerm} onChange={handleSearchChange} />
-                    <div className="search_icon" onClick={handleSearch}><img src="../img/search_icon.png"/></div>
-                  </div>
                 </div>
-
-                
               </div>
             </div>
 

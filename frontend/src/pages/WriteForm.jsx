@@ -129,12 +129,12 @@ const WriteForm = () => {
             {showProgress && (
              <div className="button_container_writeform">
              <button onClick={handleHideProgress} className="close_button_writeform">
-               닫기
+                 닫기
              </button>
              <button onClick={handlePost} className="post_button_writeform">
-               <FaPaperPlane style={{ marginRight: "5px" }} /> Post
+                 🚀 Post
              </button>
-           </div>
+         </div>
             )}
 
             {/* Post 버튼 (진척도를 가져오지 않았을 때) */}

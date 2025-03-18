@@ -209,54 +209,46 @@
   .green {
     background: #2BB51F;
   }
-/* Post 버튼 & 닫기 버튼 정렬 */
+/* 버튼을 감싸는 컨테이너 */
 .button_container_writeform {
     display: flex;
-    justify-content: center; /* 가로 정렬 */
-    align-items: center; /* 수직 정렬 */
-    gap: 10px; /* 버튼 간격 */
+    justify-content: center; /* 버튼을 가로 중앙 정렬 */
+    align-items: center; /* 버튼을 세로 중앙 정렬 */
+    gap: 10px; /* 버튼 사이 간격 */
     margin-top: 20px;
-    height: 50px; /* 버튼 컨테이너의 높이 설정 */
-  }
-  
-  /* 닫기 버튼 스타일 */
-  .close_button_writeform {
+}
+
+/* 닫기 & Post 버튼 크기 통일 */
+.close_button_writeform,
+.post_button_writeform {
+    width: 120px; /* 동일한 너비 */
+    height: 50px; /* 동일한 높이 */
+    font-size: 16px; /* 글자 크기 통일 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px; /* 둥근 모서리 */
+    font-weight: bold;
+    border: none;
+    margin: 0; /* 버튼 간 간격 조절 */
+    padding: 0;
+}
+
+/* 닫기 버튼 스타일 */
+.close_button_writeform {
     background-color: black;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 120px;
-    height: 45px; /* Post 버튼과 동일한 높이 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  /* Post 버튼 스타일 */
-  .post_button_writeform {
-    background-color: #ffe600;
+    color: white;
+}
+
+/* Post 버튼 스타일 */
+.post_button_writeform {
+    background-color: #ffdb3a;
     color: black;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    font-weight: bold;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 120px;
-    height: 45px; /* 닫기 버튼과 동일한 높이 */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  /* 아이콘과 텍스트 정렬 */
-  .post_button_writeform svg {
-    margin-right: 5px; /* 아이콘과 텍스트 간격 조정 */
-  }
-  
+}
+
+
+/* 버튼 hover 효과 */
+.close_button_writeform:hover,
+.post_button_writeform:hover {
+    opacity: 0.8;
+}
