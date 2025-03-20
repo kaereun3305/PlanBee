@@ -46,8 +46,21 @@
     min-height: 80px;
   }
   
+  .post_writeform{
+    display: flex;
+    justify-content: center; /* 👉 버튼을 가로 중앙 정렬 */
+    align-items: center; /* 👉 버튼을 세로 중앙 정렬 */
+    gap: 20px; /* 버튼 사이 간격 20px */
+    margin-top: 20px; /* 위쪽 여백 */
+  }
+  .post_writeform > button:last-child{
+    background-color: #121212;
+    color: #ffffff;
+  }
   /* 진척도 가져오기 버튼 */
   .progress-button-writeform {
+    width: 160px;
+    height: 45px;
     background-color: #ffe600;
     color: black;
     border: none;
@@ -115,10 +128,10 @@
     background-color: black;
     color: #fff;
     border: none;
-    padding: 8px 12px;
-    font-size: 14px;
+    padding: 14px 45px;
+    font-size: 16px;
     font-weight: bold;
-    border-radius: 5px;
+    border-radius: 7px;
     cursor: pointer;
   }
   .close_button_writeform:hover {
@@ -217,6 +230,9 @@
     gap: 10px; /* 버튼 사이 간격 */
     margin-top: 20px;
 }
+
+.post_writeform
+
 
 /* 닫기 & Post 버튼 크기 통일 */
 .close_button_writeform,

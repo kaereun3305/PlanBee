@@ -55,10 +55,15 @@ const WriteForm = () => {
                   />
                 </div>
 
+              <div className="post_writeform">
                 {/* 진척도 가져오기 버튼 (진척도를 가져오기 전만 표시) */}
                 <button onClick={handleShowProgress} className="progress-button-writeform">
                   진척도 가져오기
                 </button>
+                <button onClick={handlePost} className="progress-button-writeform">
+                  post
+                </button>
+              </div>
               </>
             )}
 

@@ -37,7 +37,7 @@
   }
   
   .join_yes {
-    background-color:#ffe600; /* 녹색 */
+    background-color:#ffe600;
     color: #fff;
   }
   .join_yes:hover {
@@ -45,7 +45,7 @@
   }
   
   .join_no {
-    background-color: black; /* 빨간색 */
+    background-color: black; 
     color: #fff;
   }
   .join_no:hover {
@@ -54,7 +54,7 @@
   
   /* 확인 버튼 */
   .join_confirm {
-    background-color: #ffe600; /* 파란색 예시 */
+    background-color: #ffe600; 
     color: #fff;
   }
   .join_confirm:hover {

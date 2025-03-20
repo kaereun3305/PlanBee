@@ -7,6 +7,7 @@ import Social from "./pages/Social";
 import Join from "./pages/Join";
 import Group from "./pages/Group";
 import WriteForm from "./pages/WriteForm";
+import PostForm from "./pages/PostForm";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/join" element={<Join />} />
         <Route path="/group" element={<Group />} />
         <Route path="/writeform" element={<WriteForm />} />
+        <Route path="/postform" element={<PostForm />} />
       </Routes>
     </Router>
   );

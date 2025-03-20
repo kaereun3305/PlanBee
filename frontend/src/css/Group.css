@@ -137,6 +137,63 @@
   background-color: #f0f0f0;
 }
 
+
+/* 검색 드롭다운 컨테이너 */
+.search_dropdown_container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+/* 검색 드롭다운 버튼 */
+.search_dropdown {
+  width: 170px;
+  height: 58px;
+  padding: 10px;
+  background: #ffe066;
+  color: black;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 16px;
+  position: relative;
+  margin: auto;
+  margin-left: auto;
+  line-height: 38px;
+}
+
+/* 검색 드롭다운 메뉴 */
+.search_dropdown_menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  display: none;
+  z-index: 10;
+}
+
+/* 드롭다운이 보일 때 */
+.search_dropdown:hover .search_dropdown_menu {
+  display: block;
+}
+
+/* 드롭다운 옵션 스타일 */
+.search_dropdown_menu .dropdown_option {
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.search_dropdown_menu .dropdown_option:hover {
+  background: #f0f0f0;
+}
+
+
+
   .group_search{
     display: flex;
   }
@@ -168,29 +225,29 @@
     height: 30px;
   }
   
-  /* 게시글 목록 (옅은 회색 블럭) */
-  .post_list {
-    max-height: 400px; /* 스크롤 영역 높이 */
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-  }
-  
-  /* 스크롤바 (Social에 있던 예시 참고) */
-  .post_list::-webkit-scrollbar {
-    width: 50px;
-  }
-  .post_list::-webkit-scrollbar-track {
-    background-color: white;
+  /* 게시글 목록 (스크롤 가능하도록 설정) */
+.post_list {
+  max-height: 450px;  /* 높이 제한 */
+  overflow-y: auto;   /* 세로 스크롤 가능 */
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding-right: 25px; /* 스크롤과 컨텐츠 간 여백 */
+}
+
+/* 스크롤바 스타일 */
+.post_list::-webkit-scrollbar {
+  width: 50px;
+}
+.post_list::-webkit-scrollbar-track {
+  background-color: #eaeaea;
+  border-radius: 35px;
+}
+.post_list::-webkit-scrollbar-thumb {
+  border: 15px solid #eaeaea; 
+    background-color: rgb(168, 168, 168);
     border-radius: 35px;
-  }
-  .post_list::-webkit-scrollbar-thumb {
-    border: 15px solid white; 
-    background-color: #ccc;
-    border-radius: 35px;
-  }
-  
+}
   /* 게시글 아이템 (옅은 회색 블럭) */
   .post_item {
     background-color: #eaeaea; /* 옅은 회색 */
@@ -215,27 +272,27 @@
     color: #666;
   }
   
-  /* 글쓰기 아이콘 (원형 +) */
-  .write_icon {
-    position: absolute;
-    left: 40px;
-    bottom:40px;
-    width: 90px;
-    height: 90px;
-    background-color: #ffe066;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  }
-
-.write_icon > div:first-child{
-  color: #fff;
-  font-size: 50px;
-  font-weight: bold;
-  line-height: 1;
-     background-color:#ffe066;;
+  /* 글쓰기 아이콘 (항상 화면 왼쪽 아래 고정) */
+.write_icon {
+  position: absolute;  /* white_box 내에서 고정 */
+  left: 30px;
+  bottom: 30px;
+  width: 80px;
+  height: 80px;
+  background-color: #ffe066;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
 }
+
+.write_icon div {
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+}
+
   
   
