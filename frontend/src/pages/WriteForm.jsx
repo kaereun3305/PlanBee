@@ -68,86 +68,94 @@ const WriteForm = () => {
             )}
 
             {/* 진척도 가져오기를 누르면 아래의 진척도 표시됨 */}
-            {showProgress && (
-              <>
-                <p className="progress_share_info">
-                  *진척도 공유시 아래의 사진과 같이 공유됩니다.*
-                </p>
+            {/* 진척도 가져오기를 누르면 아래의 진척도 표시됨 */}
+{showProgress && (
+  <>
+    <p className="progress_share_info">
+      *진척도 공유시 아래의 사진과 같이 공유됩니다.*
+    </p>
 
-                {/* 오늘의 진척도 */}
-                <div className="progress_box_writeform">
-                  <h2>하늘다람쥐님의 오늘 진척도</h2>
-                  <h3>2025-03-18</h3>
-                  <p>오늘의 진척도</p>
-                  <p>8개 / 10개</p>
-                  <div className="progress_bar_outer_writeform">
-                    <div className="progress_bar_inner_writeform" style={{ width: "80%" }}>
-                      80%
-                    </div>
-                  </div>
-                </div>
+        {/* ✅ 🔹 가로 정렬을 위한 부모 컨테이너 추가 */}
+        <div className="progress_container">
+          {/* 오늘의 진척도 */}
+          <div className="progress_box_writeform" style={{position : "relative"}}>
+          <input type="checkbox" className="progress_checkbox" />
+            <h2>하늘다람쥐님의 오늘 진척도</h2>
+            <h3>2025-03-18</h3>
+            <p>오늘의 진척도</p>
+            <p>8개 / 10개</p>
+            <div className="progress_bar_outer_writeform">
+              <div className="progress_bar_inner_writeform" style={{ width: "80%" }}>
+                80%
+              </div>
+            </div>
+          </div>
 
-                {/* 주간 진척도 */}
-                <div className="weekly_progress_box_writeform">
-                  <h2>하늘다람쥐님의 주간 진척도</h2>
-                  <h3>03-11 ~ 03-17</h3>
-                  <div className="weekly_progress_list">
-                    <div className="weekly_progress_item">
-                      <span>03-11</span>
-                      <div className="progress_bar_outer">
-                        <div className="progress_bar_inner red" style={{ width: "20%" }}>20%</div>
-                      </div>
-                    </div>
-                    <div className="weekly_progress_item">
-                      <span>03-12</span>
-                      <div className="progress_bar_outer">
-                        <div className="progress_bar_inner yellow" style={{ width: "45%" }}>45%</div>
-                      </div>
-                    </div>
-                    <div className="weekly_progress_item">
-                      <span>03-13</span>
-                      <div className="progress_bar_outer">
-                        <div className="progress_bar_inner yellow" style={{ width: "60%" }}>60%</div>
-                      </div>
-                    </div>
-                    <div className="weekly_progress_item">
-                      <span>03-14</span>
-                      <div className="progress_bar_outer">
-                        <div className="progress_bar_inner green" style={{ width: "75%" }}>75%</div>
-                      </div>
-                    </div>
-                    <div className="weekly_progress_item">
-                      <span>03-15</span>
-                      <div className="progress_bar_outer">
-                        <div className="progress_bar_inner red" style={{ width: "30%" }}>30%</div>
-                      </div>
-                    </div>
-                    <div className="weekly_progress_item">
-                      <span>03-16</span>
-                      <div className="progress_bar_outer">
-                        <div className="progress_bar_inner green" style={{ width: "90%" }}>90%</div>
-                      </div>
-                    </div>
-                    <div className="weekly_progress_item">
-                      <span>03-17</span>
-                      <div className="progress_bar_outer">
-                        <div className="progress_bar_inner yellow" style={{ width: "50%" }}>50%</div>
-                      </div>
-                    </div>
-                  </div>
+          {/* 주간 진척도 */}
+          <div className="weekly_progress_box_writeform" style={{position : "relative"}}>
+            <input type="chceckbox" className="progress_checkbox" /> 
+            <h2>하늘다람쥐님의 주간 진척도</h2>
+            <input type="checkbox" className="progress_checkbox" />
+            <h3>03-11 ~ 03-17</h3>
+            <div className="weekly_progress_list">
+              <div className="weekly_progress_item">
+                <span>03-11</span>
+                <div className="progress_bar_outer">
+                  <div className="progress_bar_inner red" style={{ width: "20%" }}>20%</div>
                 </div>
+              </div>
+              <div className="weekly_progress_item">
+                <span>03-12</span>
+                <div className="progress_bar_outer">
+                  <div className="progress_bar_inner yellow" style={{ width: "45%" }}>45%</div>
+                </div>
+              </div>
+              <div className="weekly_progress_item">
+                <span>03-13</span>
+                <div className="progress_bar_outer">
+                  <div className="progress_bar_inner yellow" style={{ width: "60%" }}>60%</div>
+                </div>
+              </div>
+              <div className="weekly_progress_item">
+                <span>03-14</span>
+                <div className="progress_bar_outer">
+                  <div className="progress_bar_inner green" style={{ width: "75%" }}>75%</div>
+                </div>
+              </div>
+              <div className="weekly_progress_item">
+                <span>03-15</span>
+                <div className="progress_bar_outer">
+                  <div className="progress_bar_inner red" style={{ width: "30%" }}>30%</div>
+                </div>
+              </div>
+              <div className="weekly_progress_item">
+                <span>03-16</span>
+                <div className="progress_bar_outer">
+                  <div className="progress_bar_inner green" style={{ width: "90%" }}>90%</div>
+                </div>
+              </div>
+              <div className="weekly_progress_item">
+                <span>03-17</span>
+                <div className="progress_bar_outer">
+                  <div className="progress_bar_inner yellow" style={{ width: "50%" }}>50%</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                {/* 닫기 + Post 버튼 (진척도 가져온 후 표시됨) */}
-                <div className="button_container_writeform">
-                  <button onClick={handleHideProgress} className="close_button_writeform">
-                    닫기
-                  </button>
-                  <button onClick={handlePost} className="post_button_writeform">
-                    Post
-                  </button>
-                </div>
-              </>
-            )}
+        {/* 닫기 + Post 버튼 */}
+        <div className="button_container_writeform">
+          <button onClick={handleHideProgress} className="close_button_writeform">
+            닫기
+          </button>
+          <button onClick={handlePost} className="post_button_writeform">
+            Post
+          </button>
+        </div>
+      </>
+    )}
+
           </div>
         </div>
       </div>

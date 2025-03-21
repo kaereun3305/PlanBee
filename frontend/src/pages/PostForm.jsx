@@ -7,12 +7,30 @@ import "../css/PostForm.css";
 
 const PostForm = () => {
   const navigate = useNavigate();
-  const [showPostMenu, setShowPostMenu] = useState(false);
-  const [showCommentMenu, setShowCommentMenu] = useState(null);
+  const [activeMenu, setActiveMenu] = useState(null); // 게시글 또는 댓글 드롭다운 활성화 상태
 
-  const togglePostMenu = () => setShowPostMenu(!showPostMenu);
-  const toggleCommentMenu = (id) =>
-    setShowCommentMenu(showCommentMenu === id ? null : id);
+  // 🔹 메뉴 토글 함수 (게시글 및 댓글용)
+  const toggleMenu = (id) => {
+    setActiveMenu(activeMenu === id ? null : id);
+  };
+
+  // 🔹 댓글 데이터 (추후 API 연동 가능)
+  const comments = [
+    {
+      id: 1,
+      avatarClass: "red_avatar",
+      userName: "오늘부터 진짜 열심히 산다",
+      text: "이 분 뭐하는 분이죠?",
+      time: "2분 전",
+    },
+    {
+      id: 2,
+      avatarClass: "gray_avatar",
+      userName: "그러다가 돼버렸지 미루니",
+      text: "저도 아무것도 안 했어요. 인생은 원래 다 그런겁니다.",
+      time: "1분 전",
+    },
+  ];
 
   return (
     <div className="main_container">
@@ -26,13 +44,13 @@ const PostForm = () => {
               <FaArrowLeft className="back_icon" />
             </button>
 
-            {/* 🔹 제목 & 드롭다운 */}
+            {/* 🔹 게시글 제목 & 드롭다운 */}
             <div className="post_header">
               <h2 className="post_title">오늘 한 일 자랑해봅니다.</h2>
-              <button className="options_button" onClick={togglePostMenu}>
+              <button className="options_button" onClick={() => toggleMenu("post")}>
                 <FaEllipsisV />
               </button>
-              {showPostMenu && (
+              {activeMenu === "post" && (
                 <div className="dropdown_menu post_dropdown">
                   <button>수정</button>
                   <button>삭제</button>
@@ -43,7 +61,7 @@ const PostForm = () => {
             {/* 🔹 밑줄 */}
             <hr className="post_divider" />
 
-            {/* 🔹 작성자, 조회수, 날짜 */}
+            {/* 🔹 작성자 정보 */}
             <div className="post_info">
               <span>작성자</span>
               <span>조회수: 26</span>
@@ -59,55 +77,27 @@ const PostForm = () => {
 
             {/* 🔹 댓글 섹션 */}
             <div className="comment_section">
-              {/* 🔹 댓글 1 */}
-              <div className="comment">
-                <div className="comment_user">
-                  <div className="user_avatar red_avatar"></div>
-                  <span className="user_name">오늘부터 진짜 열심히 산다</span>
-                  <button
-                    className="options_button"
-                    onClick={() => toggleCommentMenu(1)}
-                  >
-                    <FaEllipsisV />
-                  </button>
-                  {showCommentMenu === 1 && (
-                    <div className="dropdown_menu comment_dropdown">
-                      <button>수정</button>
-                      <button>삭제</button>
-                    </div>
-                  )}
+              {comments.map((comment) => (
+                <div key={comment.id} className="comment">
+                  <div className="comment_user">
+                    <div className={`user_avatar ${comment.avatarClass}`} />
+                    <span className="user_name">{comment.userName}</span>
+                    <button className="options_button" onClick={() => toggleMenu(comment.id)}>
+                      <FaEllipsisV />
+                    </button>
+                    {activeMenu === comment.id && (
+                      <div className="dropdown_menu comment_dropdown">
+                        <button>수정</button>
+                        <button>삭제</button>
+                      </div>
+                    )}
+                  </div>
+                  <div className="comment_text_box">
+                    <p className="comment_text">{comment.text}</p>
+                    <span className="comment_time">{comment.time}</span>
+                  </div>
                 </div>
-                <div className="comment_text_box">
-                  <p className="comment_text">이 분 뭐하는 분이죠?</p>
-                  <span className="comment_time">2분 전</span>
-                </div>
-              </div>
-
-              {/* 🔹 댓글 2 */}
-              <div className="comment">
-                <div className="comment_user">
-                  <div className="user_avatar gray_avatar"></div>
-                  <span className="user_name">그러다가 돼버렸지 미루니</span>
-                  <button
-                    className="options_button"
-                    onClick={() => toggleCommentMenu(2)}
-                  >
-                    <FaEllipsisV />
-                  </button>
-                  {showCommentMenu === 2 && (
-                    <div className="dropdown_menu comment_dropdown">
-                      <button>수정</button>
-                      <button>삭제</button>
-                    </div>
-                  )}
-                </div>
-                <div className="comment_text_box">
-                  <p className="comment_text">
-                    저도 아무것도 안 했어요. 인생은 원래 다 그런겁니다.
-                  </p>
-                  <span className="comment_time">1분 전</span>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
