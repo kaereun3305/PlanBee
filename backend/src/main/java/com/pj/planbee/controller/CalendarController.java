@@ -96,7 +96,9 @@ public class CalendarController {
      @GetMapping(value="/maxStreak", produces="application/json;charset=UTF-8")
      public int maxStreak(HttpSession se) {
          String sessionId = (String) se.getAttribute("sessionId");
+         System.out.println(sessionId);
          Map<String, Integer> result = cs.curProgress(sessionId); // 결과 값을 받아오기
+         System.out.println("값을 받아옴 : " + result);
  
          return result.get("maxStreak");
      }

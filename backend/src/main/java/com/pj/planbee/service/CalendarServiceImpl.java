@@ -55,6 +55,7 @@ public class CalendarServiceImpl implements CalendarService {
         String todayStr = today.format(formatter);
 
         List<Double> userProgress = tlMap.userProgress(userId);
+        System.out.println("사용자 progress 데이터: " + userProgress);
 
         int tempStreak = 0;
         int maxStreak = 0;
@@ -72,6 +73,7 @@ public class CalendarServiceImpl implements CalendarService {
         if (!userProgress.isEmpty() && userProgress.get(userProgress.size() - 1) > 0.3) {
             curStreak = tempStreak;
         }
+        System.out.println("curStreak: " + curStreak + ", maxStreak: " + maxStreak);
 
         Map<String, Integer> result = new HashMap<>();
         result.put("curStreak", curStreak);
