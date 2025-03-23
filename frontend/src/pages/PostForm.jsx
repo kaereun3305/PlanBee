@@ -45,18 +45,24 @@ const PostForm = () => {
             </button>
 
             {/* 🔹 게시글 제목 & 드롭다운 */}
-            <div className="post_header">
-              <h2 className="post_title">오늘 한 일 자랑해봅니다.</h2>
-              <button className="options_button" onClick={() => toggleMenu("post")}>
-                <FaEllipsisV />
-              </button>
-              {activeMenu === "post" && (
-                <div className="dropdown_menu post_dropdown">
-                  <button>수정</button>
-                  <button>삭제</button>
-                </div>
-              )}
-            </div>
+            {/* 🔹 게시글 제목 & 드롭다운 */}
+<div className="post_header">
+  <h2 className="post_title">오늘 한 일 자랑해봅니다.</h2>
+
+  {/* ✅ 이 부분을 wrapper로 감싸줌 */}
+  <div className="dropdown_wrapper">
+    <button className="options_button" onClick={() => toggleMenu("post")}>
+      <FaEllipsisV />
+    </button>
+    {activeMenu === "post" && (
+      <div className="dropdown_menu post_dropdown">
+        <button>댓글달기</button>
+        <button>수정</button>
+        <button>삭제</button>
+      </div>
+    )}
+  </div>
+</div>
 
             {/* 🔹 밑줄 */}
             <hr className="post_divider" />
@@ -87,8 +93,10 @@ const PostForm = () => {
                     </button>
                     {activeMenu === comment.id && (
                       <div className="dropdown_menu comment_dropdown">
+                        <button>댓글달기</button>
                         <button>수정</button>
                         <button>삭제</button>
+                        
                       </div>
                     )}
                   </div>
